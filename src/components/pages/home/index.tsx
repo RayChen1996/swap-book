@@ -11,15 +11,17 @@ import FlashSale from "./FlashSale";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Banner />
-      <FlashSale />
-      <BestSeller />
-      <ProductHighlight />
-      <ServiceInfo />
-      <LatestNews />
-      <FeaturedProducts />
-      <SearchArea />
-    </div>
+      <div className="mx-auto">
+        <FlashSale />
+        <BestSeller />
+        <ProductHighlight />
+        <ServiceInfo />
+        <LatestNews />
+        <FeaturedProducts />
+        <SearchArea />
+      </div>
+    </>
   );
 }

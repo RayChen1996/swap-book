@@ -4,7 +4,7 @@ import { User, ShoppingCart } from "lucide-react";
 export default function AppHeader() {
   return (
     <div className="bg-white sm:container mx-auto">
-      <header className="justify-between items-center flex">
+      <header className="justify-between items-center flex my-[26px]">
         <div className="flex items-center gap-4">
           <select>
             <option value="en">EN</option>
@@ -20,15 +20,15 @@ export default function AppHeader() {
             <User />
             <span>My Profile</span>
           </button>
-          <button className="relative">
+          <Link to={"/cart"} className="relative">
             <ShoppingCart />
-          </button>
+          </Link>
         </div>
       </header>
-      <header className="  justify-between items-center flex">
+      <header className="my-[26px] justify-between items-center flex">
         <Link to="/" className="flex items-center gap-2">
           <img src="/Icon.png" alt="logo" />
-          <span>E-Comm</span>
+          <span className=" font-bold">E-Comm</span>
         </Link>
         <ul className="flex items-center gap-4 max-sm:hidden lg:flex gap-x-[97px]">
           <li>

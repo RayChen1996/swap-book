@@ -26,7 +26,7 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-white text-black flex flex-col">
       <AppHeader />
       <div className="flex-1">
         <Outlet />

@@ -1,5 +1,11 @@
-// import AdmingLayout from "../admin/index";
+import AdminLayout from "../../Layout/admin/layout";
 
 export default function Index() {
-  return <div>{/* <AdmingLayout /> */}</div>;
+  return (
+    <div>
+      <AdminLayout>
+        <></>
+      </AdminLayout>
+    </div>
+  );
 }

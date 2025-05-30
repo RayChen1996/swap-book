@@ -6,11 +6,16 @@ export default function AppHeader() {
     <div className="bg-white sm:container mx-auto">
       <header className="justify-between items-center flex my-[26px]">
         <div className="flex items-center gap-4">
-          <select>
+          <select className=" bg-white border border-gray-300 rounded-md p-2">
+            <option value="USD">EN</option>
+            <option value="TWD">ZH</option>
+          </select>
+          {/* <select>
             <option value="en">EN</option>
             <option value="zh">ZH</option>
-          </select>
-          <select>
+          </select> */}
+
+          <select className=" bg-white border border-gray-300 rounded-md p-2">
             <option value="USD">USD</option>
             <option value="TWD">TWD</option>
           </select>
@@ -22,6 +27,9 @@ export default function AppHeader() {
           </button>
           <Link to={"/cart"} className="relative">
             <ShoppingCart />
+          </Link>
+          <Link to={"/admin"} className="flex items-center gap-2">
+            <span>後台</span>
           </Link>
         </div>
       </header>

@@ -1,15 +1,18 @@
+import { Button, HStack, Input } from "@chakra-ui/react";
+
 export default function SearchArea() {
   return (
     <footer className="text-center py-4">
-      {/* 搜尋欄與頁腳內容 */}
-      <input
-        type="text"
-        placeholder="Search"
-        className="border rounded px-2 py-1"
-      />
-      <button className="ml-2 px-4 py-1 bg-blue-500 text-white rounded">
-        Search
-      </button>
+      <HStack className=" max-w-md mx-auto justify-center">
+        <Input
+          type="text"
+          placeholder="Search"
+          className="border rounded px-2 py-1"
+        />
+        <Button className="ml-2 px-4 py-1 bg-primary text-white rounded">
+          Search
+        </Button>
+      </HStack>
     </footer>
   );
 }

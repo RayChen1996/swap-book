@@ -1,9 +1,41 @@
 export default function ProductHighlight() {
   return (
     <section>
-      {/* 單品推薦大圖區塊內容 */}
-      <h2>Adidas Men Running Sneakers</h2>
-      {/* 產品圖片與描述可後續補充 */}
+      <div className="bg-white sm:container mx-auto">
+        <header className="my-[26px] justify-between items-center flex">
+          <h2 className="text-2xl font-bold">Product Highlights</h2>
+        </header>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Example product items */}
+          <article className="p-4 border rounded shadow-sm">
+            <img
+              src="/product1.jpg"
+              alt="Product 1"
+              className="w-full h-auto"
+            />
+            <h3 className="font-semibold mt-2">Product 1</h3>
+            <p className="text-gray-600">$29.99</p>
+          </article>
+          <article className="p-4 border rounded shadow-sm">
+            <img
+              src="/product2.jpg"
+              alt="Product 2"
+              className="w-full h-auto"
+            />
+            <h3 className="font-semibold mt-2">Product 2</h3>
+            <p className="text-gray-600">$39.99</p>
+          </article>
+          <article className="p-4 border rounded shadow-sm">
+            <img
+              src="/product3.jpg"
+              alt="Product 3"
+              className="w-full h-auto"
+            />
+            <h3 className="font-semibold mt-2">Product 3</h3>
+            <p className="text-gray-600">$49.99</p>
+          </article>
+        </div>
+      </div>
     </section>
   );
 }

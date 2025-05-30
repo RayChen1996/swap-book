@@ -6,7 +6,6 @@ import {
   Text,
   useDisclosure,
   type BoxProps,
-  CloseButton,
   IconButton,
   HStack,
   type FlexProps,
@@ -19,6 +18,8 @@ import {
   FiLogOut,
 } from "react-icons/fi";
 import type { IconType } from "react-icons";
+import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface LinkItemProps {
   name: string;
@@ -47,6 +48,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
+        <Outlet />
       </Box>
     </Box>
   );
@@ -56,9 +58,9 @@ interface SidebarProps extends BoxProps {
   onClose: () => void;
 }
 
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ ...props }: SidebarProps) => {
   const [activePath, setActivePath] = useState("/admin/products");
-
+  console.log(props);
   return (
     <Box
       transition="3s ease"
@@ -66,14 +68,14 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
-      {...rest}
+      {...props}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      {/* <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           管理後台
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
-      </Flex>
+      </Flex> */}
       {LinkItems.map((link) => (
         <NavItem
           key={link.name}
@@ -86,7 +88,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </NavItem>
       ))}
 
-      <NavItem icon={FiLogOut} path="/logout" color="red.500">
+      <NavItem icon={FiLogOut} path="/" color="red.500">
         登出
       </NavItem>
     </Box>
@@ -102,40 +104,50 @@ interface NavItemProps extends FlexProps {
 
 const NavItem = ({ icon, children, active, ...rest }: NavItemProps) => {
   return (
-    <Box
-      as="a"
+    <Link
+      to={rest.path}
       style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
+      onClick={() => {
+        if (rest.onClick) {
+          // rest.onClick();
+        }
+      }}
     >
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        bg={active ? "blue.50" : "transparent"}
-        color={active ? "blue.500" : "inherit"}
-        fontWeight={active ? "bold" : "normal"}
-        _hover={{
-          bg: "blue.50",
-          color: "blue.500",
-        }}
-        {...rest}
+      <Box
+        as="a"
+        style={{ textDecoration: "none" }}
+        _focus={{ boxShadow: "none" }}
       >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "blue.500",
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Box>
+        <Flex
+          align="center"
+          p="4"
+          mx="4"
+          borderRadius="lg"
+          role="group"
+          cursor="pointer"
+          bg={active ? "blue.50" : "transparent"}
+          color={active ? "blue.500" : "inherit"}
+          fontWeight={active ? "bold" : "normal"}
+          _hover={{
+            bg: "blue.50",
+            color: "blue.500",
+          }}
+          {...rest}
+        >
+          {icon && (
+            <Icon
+              mr="4"
+              fontSize="16"
+              _groupHover={{
+                color: "blue.500",
+              }}
+              as={icon}
+            />
+          )}
+          {children}
+        </Flex>
+      </Box>
+    </Link>
   );
 };
 

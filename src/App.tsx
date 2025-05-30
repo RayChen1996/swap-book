@@ -1,6 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import "./App.css";
 import { useEffect } from "react";
+import AppHeader from "./components/Layout/AppHeader";
+import AppFooter from "./components/Layout/AppFooter";
 
 const TITLE_MAP: Record<string, string> = {
   "/": "首頁",
@@ -24,9 +26,13 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <>
-      <Outlet />
-    </>
+    <div className="min-h-screen flex flex-col">
+      <AppHeader />
+      <div className="flex-1">
+        <Outlet />
+      </div>
+      <AppFooter />
+    </div>
   );
 }
 
